@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BuildPro – Enterprise Construction Management System</title>
+  <meta name="description" content="Centralized multi-company construction management platform for projects, budgets, procurement, materials, workforce, site operations and executive reporting.">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to main content</a>
+
+  <!-- Authentication & Company Workspace Portal -->
+  <div id="login">
+    <section class="login-art">
+      <div>
+        <a class="brand" href="index.html" style="color:#ffffff">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+          Build<span>Pro</span>
+        </a>
+        <div class="badge" style="margin-top:20px;background:rgba(255,255,255,0.15);color:#fff">Enterprise Operations Platform</div>
+        <h1>Control project cost before it controls the job.</h1>
+        <p>Centralize construction projects, milestone delivery, committed purchase orders, daily site reports and cash flow exposure across isolated corporate workspaces.</p>
+      </div>
+
+      <div class="credentials-box">
+        <strong style="display:block;font-size:13px;margin-bottom:6px;color:#fff">Quick Demo Login Credentials</strong>
+        <small style="color:#cbd5e1;line-height:1.5;display:block">
+          Company: <b>Demo Builders</b> · Password: <b>demo123</b><br>
+          Roles: admin@ / pm@ / site@ / buyer@ / finance@ / viewer@ demo.com
+        </small>
+      </div>
+    </section>
+
+    <div class="login-box">
+      <div class="login-card">
+        <div class="row" style="margin-bottom:4px">
+          <h2 style="margin:0">Workspace Portal</h2>
+          <span class="tag ok">Multi-Tenant v2.4</span>
+        </div>
+        <p class="muted" style="font-size:13px;margin-bottom:14px">Sign in to your company account or select an evaluation persona.</p>
+
+        <!-- Fast One-Click Persona Buttons for Instant Testing -->
+        <div class="demo-selector-title">Instant Persona Evaluation</div>
+        <div class="demo-personas">
+          <button type="button" class="demo-persona-btn" onclick="selectDemoPersona('admin', 'admin@demo.com')">
+            <strong>Tendai (Admin)</strong>
+            <span>Managing Director</span>
+          </button>
+          <button type="button" class="demo-persona-btn" onclick="selectDemoPersona('pm', 'pm@demo.com')">
+            <strong>Farai (PM)</strong>
+            <span>Project Manager</span>
+          </button>
+          <button type="button" class="demo-persona-btn" onclick="selectDemoPersona('site', 'site@demo.com')">
+            <strong>Tinashe (Site)</strong>
+            <span>Site Engineer</span>
+          </button>
+          <button type="button" class="demo-persona-btn" onclick="selectDemoPersona('buyer', 'buyer@demo.com')">
+            <strong>Chipo (Buyer)</strong>
+            <span>Procurement & Stores</span>
+          </button>
+          <button type="button" class="demo-persona-btn" onclick="selectDemoPersona('finance', 'finance@demo.com')">
+            <strong>Grace (Finance)</strong>
+            <span>Financial Controller</span>
+          </button>
+          <button type="button" class="demo-persona-btn" onclick="selectDemoPersona('viewer', 'viewer@demo.com')">
+            <strong>Auditor (Viewer)</strong>
+            <span>Client Observer</span>
+          </button>
+        </div>
+
+        <!-- Manual Login Form -->
+        <form onsubmit="event.preventDefault();login()">
+          <label for="co">Company Workspace Name</label>
+          <input id="co" name="company" autocomplete="organization" value="Demo Builders" required>
+
+          <label for="em">Authorized User Email</label>
+          <input id="em" name="email" type="email" autocomplete="username" value="admin@demo.com" required>
+
+          <label for="pw">Security Password</label>
+          <input id="pw" name="password" type="password" autocomplete="current-password" value="demo123" required>
+
+          <button class="p" type="submit" style="width:100%;margin-top:16px;padding:12px">
+            Sign In to Workspace
+          </button>
+          <button type="button" class="btn-secondary" style="width:100%;margin-top:8px" onclick="reg()">
+            Register New Company
+          </button>
+
+          <p id="err" class="bad" role="alert" style="margin-top:10px;font-size:13px"></p>
+
+          <div class="company-note" style="margin-top:16px;font-size:11.5px">
+            <b>Prototype Local Storage:</b> Workspace records are isolated and persisted locally in this browser. Production cloud deployment maps to MySQL multi-tenant schemas.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main System App Shell -->
+  <div id="app">
+    <div class="app-shell">
+      <!-- Sidebar Navigation -->
+      <aside id="sidebar">
+        <nav id="nav" aria-label="System Modules Navigation"></nav>
+      </aside>
+
+      <!-- Main Workspace Viewport -->
+      <div class="app-content">
+        <header id="userbar"></header>
+        <main id="main" tabindex="-1"></main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reusable Accessible Modal Dialog -->
+  <dialog id="dlg" aria-modal="true"></dialog>
+
+  <!-- Application Logic -->
+  <script src="assets/js/prototype.js"></script>
+</body>
+</html>
